@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Placekitten</title>
+  
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="placekitten.jquery.js" type="text/javascript" charset="utf-8"></script>
+  
+  <style type="text/css" media="screen">
+    #example1 {
+      background-color: red;
+      width: 123px;
+      height: 100px;
+    }
+    #example2 {
+      background-color: red;
+      width: 50px;
+      height: 200px;
+    }
+    #example3 {
+      background-color: red;
+      width: 230px;
+      height: 120px;
+    }
+    #example4 {
+      background-color: red;
+      width: 200px;
+      height: 100px;
+    }
+    .examples {
+      display: inline-block;
+      cursor: pointer;
+    }
+  </style>
+  <script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $('.examples').click(function(){
+      $(this).placekitten();
+    });
+  });
+  </script>
+</head>
+<body>
+  <h1 id="placekitten">placekitten</h1>
+  <p>
+    The Placekitten jQuery plugin allows you to turn any element into a kitten.
+  </p>
+  
+  <div id="example1" class="examples"></div>
+  <div id="example2" class="examples"></div>
+  <div id="example3" class="examples"></div>
+  <div id="example4" class="examples"></div>
+    
+</body>
+</html>
