@@ -11,10 +11,19 @@
       var element = this,
          $element = $(element);
 
-      // Get properties of target
-  		var style = window.getComputedStyle(this).cssText;
+      // Get style of target
+      if (cs = window.getComputedStyle(element))
+        var style = cs.cssText;
 
-  		var height = $element.height(),
+      // Same for IE
+      if (!style && element.currentStyle)
+        var style = element.currentStyle.cssText;
+
+      // If couldn't get style, the display will have to suffice
+      if (!style)
+        var display = $element.css('display');
+
+      var height = $element.height(),
            width = $element.width();
 
       // Swap target for kitten image
@@ -22,8 +31,16 @@
       var $kitten = $('<img src="' + imageUrl + '" />');
 
       // Load target css into kitten element
-      $kitten[0].style.cssText = style;
-      
+      if (style) {
+        $kitten[0].style.cssText = style;
+      } else {
+        $kitten.css({
+          'display': display,
+            'width': width,
+           'height': height
+        });
+      }
+
       // Swap the element for a kitten
       $element.replaceWith($kitten);
       $kitten.hide().fadeIn(options.fadeSpeed, callback);
