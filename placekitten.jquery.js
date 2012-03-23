@@ -8,23 +8,21 @@
 
     // Turn each element selected into a kitten
     $elements.each(function() {
-      var $element = $(this);
+      var element = this,
+         $element = $(element);
 
-      // Get css of target
-  		var display = $element.css('display'),
-        	 height = $element.height(),
-          	width = $element.width();
+      // Get properties of target
+  		var style = window.getComputedStyle(this).cssText;
+
+  		var height = $element.height(),
+           width = $element.width();
 
       // Swap target for kitten image
       var imageUrl = 'http://placekitten.com/' + width + '/' + height;
       var $kitten = $('<img src="' + imageUrl + '" />');
-      
+
       // Load target css into kitten element
-      $kitten.css({
-        'display': display, 
-        'width': width, 
-        'height': height
-      });
+      $kitten[0].style.cssText = style;
       
       // Swap the element for a kitten
       $element.replaceWith($kitten);
