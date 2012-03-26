@@ -12,8 +12,9 @@
          $element = $(element);
 
       // Get style of target
-      if (cs = window.getComputedStyle(element))
-        var style = cs.cssText;
+      if (window.getComputedStyle)
+        if (cs = window.getComputedStyle(element))
+          var style = cs.cssText;
 
       // Same for IE
       if (!style && element.currentStyle)
